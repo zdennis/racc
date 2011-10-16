@@ -440,13 +440,6 @@ extract_user_token(struct cparse_params *v, VALUE block_args,
                  v->lex_is_iterator ? "yielded" : "returned",
                  rb_class2name(CLASS_OF(block_args)));
     }
-    if (RARRAY_LEN(block_args) != 2) {
-        rb_raise(rb_eArgError,
-                 "%s() %s wrong size of array (%ld for 2)",
-                 v->lex_is_iterator ? rb_id2name(v->lexmid) : "next_token",
-                 v->lex_is_iterator ? "yielded" : "returned",
-                 RARRAY_LEN(block_args));
-    }
     *tok = AREF(block_args, 0);
     *val = AREF(block_args, 1);
 }
